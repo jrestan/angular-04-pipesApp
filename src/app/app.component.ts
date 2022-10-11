@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pipesApp';
+
+  mensaje: string = "Javier"
+
+  onCambiarNombre(){
+    this.mensaje = "Javier Restan Zegarra";
+  }
+
 }
