@@ -1,1 +1,81 @@
-<p>no-comunes works!</p>
+<div class="text-layout">
+    <h1>Pipes no comunes</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente en el Common Module.
+    </p>
+</div>
+
+
+<div class="grid">
+    <!--
+        para que funcione el p-fieldset se tuvo que agregar en el app.module.ts la linea
+        import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+        imports:[
+         BrowserAnimationsModule
+         ...]
+        
+        Para que estos p-fieldset tengan el efecto de una burbuja blanca en el boton "toggleable"
+        se coloco el siguiente codigo en el app.component.ts
+        
+        import { PrimeNGConfig } from 'primeng/api';
+        constructor(private primengConfig: PrimeNGConfig) {}
+        ngOnInit(): void {
+            this.primengConfig.ripple = true;
+        }
+        Con esto al final todos los botones tienen ese efecto no solo los del p-fieldset
+    -->
+    <div class="col md:col-6">
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+            <p>
+                Hola {{nombre}} es un placer {{genero|i18nSelect:miMapa}} a nuestro evento.
+            </p>
+            <button 
+                (click)="cambiarPersona()"
+                pButton
+                label="Cambiar Persona">
+            </button>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+            <p>
+                Actualmente {{clientes.length|i18nPlural:clienteMapa}} esperando.
+            </p>
+            <button 
+                (click)="quitarPersona()"
+                pButton
+                label="Quitar Persona">
+            </button>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="KeyValue Pipe" [toggleable]="true">
+            <!-- <span *ngFor="let item of clientes">{{item}}</span> -->
+            <ul>
+                <li *ngFor="let item of persona|keyvalue">
+                    <b>{{item.key|titlecase}}:</b> {{item.value | titlecase}}
+                </li>
+            </ul>
+        </p-fieldset>
+    </div>
+    
+    <div class="col md:col-6">
+        <p-fieldset legend="JSon Pipe" [toggleable]="true">
+            <pre>{{persona|json}}</pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="Async Pipe" [toggleable]="true">
+            <pre>{{miObservable|async}}</pre>
+
+            <pre *ngIf="!(valorPromesa|async)">Resolviendo Promesa</pre>
+            <pre>{{valorPromesa|async}}</pre>
+            
+        </p-fieldset>
+    </div>
+    
+</div>
+

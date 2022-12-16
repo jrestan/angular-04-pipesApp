@@ -1,1 +1,78 @@
-<p>basicos works!</p>
+<!-- <p>basicos works!</p> -->
+
+<div class="text-layout">
+    <h1>Pipes Basicos</h1>
+    <p>
+        Pipes incluidos en Angular - Usualmente en el Common Module.
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-4">
+        <p-card header="uppercase"
+                [subheader]="'Javier'|uppercase">
+                {{nombreLower|uppercase}}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="lowercase"
+                [subheader]="'javier'|lowercase">
+                {{nombreLower|lowercase}}
+        </p-card>
+    </div>
+    <div class="col-4">
+        <p-card header="titlecase"
+                [subheader]="nombreCompleto|titlecase">
+                {{nombreCompleto|titlecase}}
+        </p-card>
+    </div>
+</div>
+
+<div class="text-layout">
+    <h1>Date | Fecha | Pipes</h1>
+    <p>
+        Pipes para mostrar las fechas.
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li>fecha</li>
+                <li>fecha|date</li>
+                <li>fecha|date:'short'</li>
+                <li>fecha|date:'long'</li>
+                <li>fecha|date:'MMMM dd, yyyy'</li>
+            </ul>
+            
+            <hr>
+            <ul>
+                <li></li>
+            </ul>
+        </p-card>
+    </div>
+    
+    <!--todas las fechas han sido convertidas por defecto al español peru es-PE en app.module.ts-->
+
+    <div class="col-6">
+        <p-card>
+            <ul>
+                <li>{{fecha}}</li>
+                <li>{{fecha | date}}</li>
+                <li>{{fecha | date:'short'}}</li>
+                <li>{{fecha | date:'long'}}</li>
+                <li>{{fecha | date:'MMMM dd, yyyy'}}</li>
+            </ul>
+
+            <hr>
+            <ul>
+                <li>{{fecha | date:'long':'GMT-6'}}</li>
+                <li>{{fecha | date:'long':'GMT-4'}}</li>
+                <li>{{fecha | date:'long':'':'en'}}</li>  <!--en esta registrado por defecto-->
+                <li>{{fecha | date:'long':'':'fr'}}</li>  <!--fr lo he tenido que registrar en app.module.ts-->
+            </ul>
+        </p-card>
+    </div>
+
+</div>
